@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class MainScreen {
-    public static void mainMenu(ArrayList<User> users, User logged, ArrayList<Content> contents){
+    public static void mainMenu(ArrayList<User> users, RealUser logged, ArrayList<Content> contents){
         Scanner input = new Scanner(System.in);
         boolean condition = true;
 
@@ -16,10 +16,10 @@ public class MainScreen {
                     search(contents);
                     break;
                 case 3:
-                    cadastrarConteudo(contents, (RealUser) logged);
+                    cadastrarConteudo(contents, logged);
                     break;
                 case 4:
-                    store(contents, (RealUser) logged);
+                    store(contents, logged);
                     break;
                 case 5:
                     editProfile(logged);
@@ -67,7 +67,7 @@ public class MainScreen {
 
     }
 
-    public static void cadastrarConteudo(ArrayList<Content> contents, RealUser logged){
+    public static void cadastrarConteudo(ArrayList<Content> contents, User logged){
         Scanner input = new Scanner(System.in);
 
         System.out.println("Name:");
@@ -86,15 +86,6 @@ public class MainScreen {
 
         Content newContent = new Content(name, type, author, logged, null);
         contents.add(newContent);
-
-        System.out.println("Conteudo exclusivo? Sim ou nao");
-        String choice = input.nextLine().toLowerCase();
-
-        if(choice.equals("sim")){
-            newContent.setExclusive(true);
-            System.out.println("Quantos pontos custa?");
-            newContent.setCost(input.nextInt());
-        }
 
         System.out.println("Pedido realizado com sucesso. O arquivo passara por analise dos administradores," +
                 "caso seja aceito sera add ao sistema");
@@ -139,6 +130,7 @@ public class MainScreen {
         while(condition){
             View.showEdit();
             int choice = input.nextInt();
+            input.nextLine();
             switch (choice){
                 case 1:
                     System.out.println("New name:");

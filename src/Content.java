@@ -5,13 +5,13 @@ public class Content {
     private String name;
     private String type;
     private String author;
-    private RealUser sender;
+    private User sender;
     private File file; // Verificar como armazenar um pdf ou arquivo txt
     private boolean accepted;
     private boolean exclusive;
     private int cost;
 
-    public Content(String name, String type, String author, RealUser sender, File file) {
+    public Content(String name, String type, String author, User sender, File file) {
         this.name = name;
         this.type = type;
         this.author = author;
@@ -46,11 +46,11 @@ public class Content {
         this.author = author;
     }
 
-    public RealUser getSender() {
+    public User getSender() {
         return sender;
     }
 
-    public void setSender(RealUser sender) {
+    public void setSender(User sender) {
         this.sender = sender;
     }
 

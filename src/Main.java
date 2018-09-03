@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.Date;
 
 
     /*------------------------------------------------------------------
@@ -17,7 +16,9 @@ public class Main {
         ArrayList<Content> contents = new ArrayList<>();
 
         boolean condition = true;
-
+        Admin admin = new Admin("Edu", "ehfs", "1234", null);
+        admin.setVerified(true);
+        users.add(admin);
 
         while(condition){
             View.showHomeScreen();
@@ -48,13 +49,15 @@ public class Main {
                 System.out.println("Password");
                 String password = input.nextLine();
                 if(current.getPassword().equals(password)){
-                    System.out.println("Success");
-                    MainScreen.mainMenu(users, current, contents);
+                   if(current instanceof Admin){
+                       if(((Admin)current).isVerified()) {
+                           MainScreenAdmin.mainMenu(users, (Admin) current, contents);
+                       }
+                   } else MainScreen.mainMenu(users, (RealUser) current, contents);
                 }
             }
         }
     }
-
 
     public static void signUp(ArrayList<User> users, ArrayList<Content> contents){
         Scanner input = new Scanner(System.in);
@@ -86,17 +89,16 @@ public class Main {
 
         input.nextLine();
         System.out.println("Admin or user?");
-        String option = input.nextLine();
-        option = option.toLowerCase();
-        //Colocar um try catch aqui
+        String option = input.nextLine().toLowerCase();
+
         if(option.equals("admin")){
             Admin admin = new Admin(name, email, password, newProfile);
-            users.add(admin);//arrumar n da pra criar direto, pedido ter que ser feito por outro admin
+            users.add(admin);
         } else{
             RealUser user = new RealUser(name, email, password, newProfile);
             users.add(user);
             MainScreen.mainMenu(users, user, contents);
-        } // colocar um finally com chamada para mainscreen
+        }
     }
 
 }

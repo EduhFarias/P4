@@ -42,4 +42,9 @@ public class User {
     public void setProfile(Profile profile) {
         this.profile = profile;
     }
+
+    public static void showUser(User user){
+        System.out.println("Name: " + user.getName() + "\nEmail: " + user.getEmail());
+    }
+
 }
