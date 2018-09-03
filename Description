@@ -1,0 +1,16 @@
+- Sistema:
+	- Funcionalidades:
+		-- Tela inicial:
+			- Pré-visualizar: Permite ver os títulos disponíveis;
+			- Cadastrar: Permite criar conta de administrador, usuário e empresa/marca;
+			- Login;
+		-- Tela principal: 
+			- Pesquisar: Permite procurar se há algum livro desejado;
+			- Cadastrar livro: Faz o pedido de envio, os administradores avaliam e podem ou não aceitar;
+			- Criar parceiria: Caso seja uma empresa/marca (editora, autor, instituto,...),
+                                  pode adicionar contéudo extra para usuários que paguem uma taxa;
+			- Troca/Loja: A cada livro/contéudo que o usuário disponibiliza no sistema, que seja aceito,
+                                  ele ganha alguns pontos que podem ser trocados por contéudo extra;
+            		- Editar perfil: Permite alterar o dados cadastrados no sistema;
+			- Recomendações: Mostra alguns contéudos que possam ser do interesse do usuário; --Teste
+            		- Logout;
