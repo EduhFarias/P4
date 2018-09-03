@@ -82,7 +82,7 @@ public class Main {
         int month = input.nextInt();
         int year = input.nextInt();
 
-        Profile newProfile = new Profile(address, country, (Date) new Date(day, month, year), phone);
+        Profile newProfile = new Profile(address, country, new DateB (day, month, year), phone);
 
         input.nextLine();
         System.out.println("Admin or user?");

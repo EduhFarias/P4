@@ -9,6 +9,7 @@ public class Content {
     private File file; // Verificar como armazenar um pdf ou arquivo txt
     private boolean accepted;
     private boolean exclusive;
+    private int cost;
 
     public Content(String name, String type, String author, RealUser sender, File file) {
         this.name = name;
@@ -18,6 +19,7 @@ public class Content {
         this.file = file;
         this.accepted = false;
         this.exclusive = false;
+        this.cost = 0;
     }
 
     public String getName() {
@@ -74,6 +76,14 @@ public class Content {
 
     public void setExclusive(boolean exclusive) {
         this.exclusive = exclusive;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
     }
 
     public static Content getContentByName(ArrayList<Content> contents, String name){

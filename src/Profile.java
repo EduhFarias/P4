@@ -4,14 +4,14 @@ import java.util.Date;
 public class Profile {
     private String address;
     private String country;
-    private Date birthday;
+    private DateB birthday;
     private String phone;
     private ArrayList<Content> sentContents = new ArrayList<>();
     private ArrayList<Content> favoriteContent = new ArrayList<>();
     private ArrayList<Content> exclusiveContent = new ArrayList<>();
 
     public Profile(String address, String country,
-                   Date birthday, String phone) {
+                   DateB birthday, String phone) {
         this.address = address;
         this.country = country;
         this.birthday = birthday;
@@ -34,11 +34,11 @@ public class Profile {
         this.country = country;
     }
 
-    public Date getBirthday() {
+    public DateB getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(DateB birthday) {
         this.birthday = birthday;
     }
 

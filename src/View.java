@@ -6,8 +6,8 @@ public class View {
     }
 
     public static void showMainScreen(){
-        System.out.println("1. Ver todos\n2. Pesquisar\n3. Cadastrar conteudo\n4. Criar parceira" +
-                "\n5. Troca/Loja\n6. Editar perfil\n7. Recomendaçoes\n0. Sair");
+        System.out.println("1. Ver todos\n2. Pesquisar\n3. Cadastrar conteudo\n4. Troca/Loja" +
+                "\n5. Editar perfil\n6. Recomendaçoes\n0. Sair");
     }
 
     public static void showAllContent(ArrayList<Content> contents){
@@ -18,8 +18,18 @@ public class View {
     }
 
     public static void showContent(Content content){
-            System.out.println("Name: " + content.getName() + "\nAuthor" +content.getAuthor()
-                    + "\nSender: " + content.getSender() + "\nType: " +content.getType());
+        if(content.isExclusive()){
+            System.out.println("Name: " + content.getName() + "\nAuthor" + content.getAuthor()
+                    + "\nSender: " + content.getSender() + "\nType: " + content.getType()
+                    + "\nCost: " + content.getCost());
+        }
+        System.out.println("Name: " + content.getName() + "\nAuthor" + content.getAuthor()
+                + "\nSender: " + content.getSender() + "\nType: " + content.getType());
 
+    }
+
+    public static void showEdit(){
+        System.out.println("1. Edit name\n2. Edit email\n3. Edit password\n4. Edit address\n" +
+                "5. Edit Country\n6. Edit birthday\n7. Edit phone\n0. Back");
     }
 }

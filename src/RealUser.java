@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class RealUser extends User{
     private int points;
 
@@ -13,4 +15,5 @@ public class RealUser extends User{
     public void setPoints(int points) {
         this.points = points;
     }
+
 }

@@ -24,6 +24,7 @@ public class Admin extends User{
                 if(choice.equals("s")){
                     current.setAccepted(true);
                     current.getSender().setPoints(calcularPontos(current));
+                    current.getSender().getProfile().getSentContents().add(current);
                 } else contents.remove(current);
             }
         }

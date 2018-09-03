@@ -1,4 +1,3 @@
-import java.io.File;
 import java.util.*;
 
 public class MainScreen {
@@ -11,7 +10,7 @@ public class MainScreen {
             int choice = input.nextInt();
             switch (choice) {
                 case 1:
-                    verTodosConteudos(contents);
+                    verTodosConteudos(contents, logged);
                     break;
                 case 2:
                     search(contents);
@@ -20,15 +19,12 @@ public class MainScreen {
                     cadastrarConteudo(contents, (RealUser) logged);
                     break;
                 case 4:
-                    //criar parceria();
-                    break;
-                case 5:
                     store(contents, (RealUser) logged);
                     break;
-                case 6:
-                    //Editar perfil
+                case 5:
+                    editProfile(logged);
                     break;
-                case 7  :
+                case 6:
                     //Recomendaçoes
                     break;
                 default:
@@ -37,7 +33,7 @@ public class MainScreen {
         }
     }
 
-    public static void verTodosConteudos(ArrayList<Content> contents){
+    public static void verTodosConteudos(ArrayList<Content> contents, User logged){
         Scanner input = new Scanner(System.in);
 
         System.out.println("Escolha algum conteudo ou digite back para voltar");
@@ -47,6 +43,10 @@ public class MainScreen {
         if(!choice.equals("back")){
             try{
                 View.showContent(Content.getContentByName(contents, choice));
+                System.out.println("Deseja add aos favoritos? Sim ou nao");
+                if(input.nextLine().toLowerCase().equals("sim")){
+                    logged.getProfile().getFavoriteContent().add(Content.getContentByName(contents, choice));
+                }
             } catch (NullPointerException e){
                 System.out.println("Arquivo nao encontrado");
             }
@@ -84,16 +84,21 @@ public class MainScreen {
 
         //Converter de string para file ou ver como fazer dps
 
+        Content newContent = new Content(name, type, author, logged, null);
+        contents.add(newContent);
+
+        System.out.println("Conteudo exclusivo? Sim ou nao");
+        String choice = input.nextLine().toLowerCase();
+
+        if(choice.equals("sim")){
+            newContent.setExclusive(true);
+            System.out.println("Quantos pontos custa?");
+            newContent.setCost(input.nextInt());
+        }
+
         System.out.println("Pedido realizado com sucesso. O arquivo passara por analise dos administradores," +
                 "caso seja aceito sera add ao sistema");
 
-        Content newContent = new Content(name, type, author, logged, null);
-        contents.add(newContent);
-    }
-
-    public static void parceria(ArrayList<Content> contents, User logged){ //criar classe empresa
-        cadastrarConteudo(contents, (RealUser) logged);
-        //dar um jeito de pegar esse conteudo que foi add e fazer o content.setExclusive(true);
     }
 
     public static void store(ArrayList<Content> contents, RealUser logged){
@@ -105,8 +110,71 @@ public class MainScreen {
                 View.showContent(current);
             }
         }
+        System.out.println("Digite o nome de algum conteudo ou digite back para voltar");
+        String choice = input.nextLine();
+
+        if(!choice.equals("back")){
+            Content content = Content.getContentByName(contents, choice);
+            System.out.println("Confirmar troca de pontos nesse conteudo? Sim ou nao");
+            View.showContent(content);
+            choice = input.nextLine().toLowerCase();
+            if(choice.equals("sim")){
+                try{
+                    if(logged.getPoints() >= content.getCost()){
+                        logged.getProfile().getExclusiveContent().add(content);
+                        logged.setPoints(logged.getPoints() - content.getCost());
+                    }
+                } catch (NullPointerException e){
+                    System.out.println("Algum erro, ver dps ou pontos insuficientes");
+                }
+            }
+        }
 
     }
 
+    public static void editProfile(User logged){
+        Scanner input = new Scanner(System.in);
+        boolean condition = true;
 
+        while(condition){
+            View.showEdit();
+            int choice = input.nextInt();
+            switch (choice){
+                case 1:
+                    System.out.println("New name:");
+                    logged.setName(input.nextLine());
+                    break;
+                case 2:
+                    System.out.println("New email:");
+                    logged.setEmail(input.nextLine());
+                    break;
+                case 3:
+                    System.out.println("New password:");
+                    String password = input.nextLine();
+                    System.out.println("Enter old password to confirm:");
+                    if(logged.getPassword().equals(input.nextLine())){
+                        logged.setPassword(password);
+                    } else System.out.println("Password invalid");
+                    break;
+                case 4:
+                    System.out.println("New address:");
+                    logged.getProfile().setAddress(input.nextLine());
+                    break;
+                case 5:
+                    System.out.println("New country:");
+                    logged.getProfile().setCountry(input.nextLine());
+                    break;
+                case 6:
+                    System.out.println("New day, mouth and year");
+                    logged.getProfile().setBirthday(new DateB(input.nextInt(), input.nextInt(), input.nextInt()));
+                    break;
+                case 7:
+                    System.out.println("New phone:");
+                    logged.getProfile().setPhone(input.nextLine());
+                    break;
+                default:
+                    condition = false;
+            }
+        }
+    }
 }
