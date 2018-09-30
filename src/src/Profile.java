@@ -14,25 +14,33 @@ import java.util.*;
 public class Profile {
     private String name;
     private String email;
+    private String profile;
     private String password;
+    private String sex;
+    private String city;
     private String address;
     private String country;
-    private DateB birthday;
+    private String birthday;
     private String phone;
-    private ArrayList<Content> sentContents = new ArrayList<>();
-    private ArrayList<Content> favoriteContent = new ArrayList<>();
-    private ArrayList<Content> exclusiveContent = new ArrayList<>();
+    private ArrayList<Product> myProducts = new ArrayList<>();
 
-    public Profile(String name, String email, String password, String address, String country, DateB birthday, String phone) {
+    public Profile(String name, String email, String profile, String password, String sex, String city, String address, String country, String birthday, String phone) {
         this.name = name;
         this.email = email;
+        this.profile = profile;
         this.password = password;
+        this.sex = sex;
+        this.city = city;
         this.address = address;
         this.country = country;
         this.birthday = birthday;
         this.phone = phone;
     }
 
+    public Profile(){
+        
+    }
+    
     public String getName() {
         return name;
     }
@@ -49,6 +57,32 @@ public class Profile {
         this.email = email;
     }
 
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+    
+    
+    
     public String getPassword() {
         return password;
     }
@@ -73,11 +107,11 @@ public class Profile {
         this.country = country;
     }
 
-    public DateB getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(DateB birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -89,27 +123,38 @@ public class Profile {
         this.phone = phone;
     }
 
-    public ArrayList<Content> getSentContents() {
-        return sentContents;
+    public ArrayList<Product> getMyProducts() {
+        return myProducts;
     }
 
-    public void setSentContents(ArrayList<Content> sentContents) {
-        this.sentContents = sentContents;
+    public void setMyProducts(ArrayList<Product> myProducts) {
+        this.myProducts = myProducts;
     }
 
-    public ArrayList<Content> getFavoriteContent() {
-        return favoriteContent;
-    }
+    
 
-    public void setFavoriteContent(ArrayList<Content> favoriteContent) {
-        this.favoriteContent = favoriteContent;
+    public Profile login(ArrayList<Profile> profiles, String email, String password){
+        for(Profile current : profiles){
+            if(current.getEmail().equals(email)){
+                if(current.getPassword().equals(password)){
+                    return current;
+                }
+            }
+        }
+        return null;
     }
-
-    public ArrayList<Content> getExclusiveContent() {
-        return exclusiveContent;
-    }
-
-    public void setExclusiveContent(ArrayList<Content> exclusiveContent) {
-        this.exclusiveContent = exclusiveContent;
+    
+    public void EditProfile(Profile profile, String name, String phone, String date, String sex, 
+            String address, String city, String country, String email, String password){
+        
+        profile.setName(name);
+        profile.setAddress(address);
+        profile.setBirthday(date);
+        profile.setCity(city);
+        profile.setSex(sex);
+        profile.setPhone(phone);
+        profile.setPassword(password);
+        profile.setCountry(country);
+        profile.setEmail(email);
     }
 }

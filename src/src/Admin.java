@@ -12,7 +12,7 @@ package src;
 import java.util.*;
 
 public class Admin extends Profile{
-    private boolean verified = false;
+    private boolean verified;
 
     public boolean isVerified() {
         return verified;
@@ -22,49 +22,38 @@ public class Admin extends Profile{
         this.verified = verified;
     }
 
-    public Admin(String name, String email, String password, String address, String country, DateB birthday, String phone) {
-        super(name, email, password, address, country, birthday, phone);
+    public Admin(String name, String email, String password, String sex, String city, String address, String country, String birthday, String phone) {
+        super(name, email, "admin", password, sex, city, address, country, birthday, phone);
+        this.verified = false;
     }
+    
+    public Admin(){}
 
-    public static void acceptAdmin(ArrayList<Profile> users){
-        Scanner input = new Scanner(System.in);
-
-        for(Profile current :  users){
-            if(current instanceof Admin){
-                if(!((Admin)current).isVerified()){
-                    //User.showUser(current); fazer a tela jframe
-                    System.out.println("Deseja add esse usuario como admin? Sim ou nao");
-                    if(input.nextLine().toLowerCase().equals("sim")){
-                        ((Admin)current).setVerified(true);
-                    }
+    public void AcceptProduct(String title){
+        Data data = new Data();
+        data = data.getData();
+        
+        for(Product current : data.getProducts()){
+            if(current.getName().equals(title)){
+                int size = (int) current.getFile().length();
+                if(size >= 100){
+                    size = 100;
                 }
+                User user = (User) current.getSender();
+                user.getMyProducts().add(current);
+                user.setPoints(user.getPoints() + size);
+                current.setAccepted(true);
             }
         }
+        data.setData(data);
     }
-
-    public static void checkContent(ArrayList<Content> contents){
-        Scanner input = new Scanner(System.in);
-
-        for(Content current : contents){
-            if(!current.isAccepted()){
-                View.showContent(current);
-                System.out.println("Aceitar o pedido? S ou N");
-                String choice = input.nextLine().toLowerCase();
-
-                if(choice.equals("s")){
-                    current.setAccepted(true);
-                    if(current.getSender() instanceof User){
-                        ((User)current.getSender()).setPoints(calcularPontos(current));
-                    }
-                    current.getSender().getSentContents().add(current);
-                } else contents.remove(current);
+    
+    public void RemoveProduct(ArrayList<Product> products,String title){
+        for(int i = 0; i < products.size(); i++){
+            if(products.get(i).getName().equals(title)){
+                products.remove(i);
             }
         }
-    }
-
-    public static int calcularPontos(Content content){
-        //dar um jeito de calcular pontos com base no conteudo postado
-        return 0;
     }
 }
 
