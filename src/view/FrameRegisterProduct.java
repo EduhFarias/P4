@@ -9,7 +9,7 @@ import src.Product;
 
 /**
  *
- * @author PC
+ * @author @EduhFarias
  */
 public class FrameRegisterProduct extends javax.swing.JFrame {
 

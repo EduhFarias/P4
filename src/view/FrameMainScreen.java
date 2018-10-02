@@ -8,7 +8,7 @@ import src.Product;
 
 /**
  *
- * @author PC
+ * @author @EduhFarias
  */
 public class FrameMainScreen extends javax.swing.JFrame {
 

@@ -1,4 +1,5 @@
 
+
 package view;
 
 import javax.swing.JOptionPane;
@@ -9,7 +10,7 @@ import src.User;
 
 /**
  *
- * @author PC
+ * @author @EduhFarias
  */
 public class FrameArchives extends javax.swing.JFrame {
 

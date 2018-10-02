@@ -1,8 +1,9 @@
+
 package src;
 
 /**
  *
- * @author @Eduhfarias
+ * @author @EduhFarias
  */
 import java.util.*;
 
@@ -75,9 +76,7 @@ public class Profile {
     public void setCity(String city) {
         this.city = city;
     }
-    
-    
-    
+
     public String getPassword() {
         return password;
     }
@@ -85,7 +84,7 @@ public class Profile {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public String getAddress() {
         return address;
     }

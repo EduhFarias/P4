@@ -1,10 +1,10 @@
+
 package src;
 
 /**
  *
- * @author @Eduhfarias
+ * @author @EduhFarias
  */
-import java.util.*;
 
 public class User extends Profile{
     private int points;

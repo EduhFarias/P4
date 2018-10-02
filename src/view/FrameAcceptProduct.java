@@ -9,7 +9,7 @@ import src.Product;
 
 /**
  *
- * @author PC
+ * @author @EduhFarias
  */
 public class FrameAcceptProduct extends javax.swing.JFrame {
 
@@ -183,18 +183,14 @@ public class FrameAcceptProduct extends javax.swing.JFrame {
 
     private void jBRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRejectActionPerformed
         // TODO add your handling code here:
-        Data data = new Data();
-        data = data.getData();
-        
         for(int i = 0; i < jTable.getRowCount(); i++){
             boolean choice = (boolean) jTable.getValueAt(i, 4);
             if(choice){
                 String title = jTable.getValueAt(i, 0).toString();
                 Admin admin = new Admin();
-                admin.RemoveProduct(data.getProducts(), title);
+                admin.RemoveProduct(title);
             }
         }
-        data.setData(data);
         JOptionPane.showMessageDialog(this, "Contéudos rejeitados!");
         FrameAcceptProduct frame = new FrameAcceptProduct();
         this.dispose();

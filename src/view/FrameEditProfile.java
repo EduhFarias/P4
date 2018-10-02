@@ -7,7 +7,7 @@ import src.Profile;
 
 /**
  *
- * @author PC
+ * @author @EduhFarias
  */
 public class FrameEditProfile extends javax.swing.JFrame {
 
@@ -18,8 +18,7 @@ public class FrameEditProfile extends javax.swing.JFrame {
         initComponents();
         Data data = new Data();
         data = data.getData();
-        Profile profile = new Profile();
-        profile = data.getProfiles().get(0);
+        Profile profile = data.getProfiles().get(0);
         jTFName.setText(profile.getName());
         jFTFPhone.setText(profile.getPhone());
         jFTFDate.setText(profile.getBirthday());

@@ -4,13 +4,12 @@ package view;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import src.Data;
 import src.Product;
 
 /**
  *
- * @author PC
+ * @author @EduhFarias
  */
 public class FrameProduct extends javax.swing.JFrame {
 

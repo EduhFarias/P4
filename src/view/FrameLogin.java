@@ -2,14 +2,13 @@
 package view;
 
 import javax.swing.JOptionPane;
-import src.Admin;
 import src.Data;
 import src.Profile;
 //import static src.Data.getData;
 
 /**
  *
- * @author PC
+ * @author @EduhFarias
  */
 public class FrameLogin extends javax.swing.JFrame {
 

@@ -1,12 +1,11 @@
 
 package view;
 
-import src.Data;
 import src.User;
 
 /**
  *
- * @author PC
+ * @author @EduhFarias
  */
 public class FrameRegister extends javax.swing.JFrame {
 

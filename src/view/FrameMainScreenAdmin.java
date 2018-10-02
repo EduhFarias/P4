@@ -8,7 +8,7 @@ import src.Product;
 
 /**
  *
- * @author PC
+ * @author @EduhFarias
  */
 public class FrameMainScreenAdmin extends javax.swing.JFrame {
 
@@ -49,6 +49,7 @@ public class FrameMainScreenAdmin extends javax.swing.JFrame {
         jBSearch = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema");
@@ -163,6 +164,15 @@ public class FrameMainScreenAdmin extends javax.swing.JFrame {
         );
 
         jMenu1.setText("Sobre");
+
+        jMenuItem1.setText("Sistema");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -247,6 +257,12 @@ public class FrameMainScreenAdmin extends javax.swing.JFrame {
         frame.setVisible(true);
     }//GEN-LAST:event_jBRemoveActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "O sistema permite acesso aos mais diversos tipos de conteúdos, seja "
+                + ": revistas, artigos, livros, livros didáticos, etc.", "Sistema", 1);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -292,6 +308,7 @@ public class FrameMainScreenAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jBSearch;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTFSearch;

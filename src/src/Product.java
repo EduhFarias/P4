@@ -1,8 +1,9 @@
+
 package src;
 
 /**
  *
- * @author @Eduhfarias
+ * @author @EduhFarias
  */
 import java.io.File;
 
@@ -11,7 +12,7 @@ public class Product {
     private String type;
     private String author;
     private Profile sender;
-    private File file; // Verificar como armazenar um pdf ou arquivo txt
+    private File file;
     private boolean accepted;
     private boolean exclusive;
     private int cost;
@@ -124,6 +125,4 @@ public class Product {
         return null;
     }
 
-
 }
-

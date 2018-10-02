@@ -1,10 +1,10 @@
+
 package src;
 
 /**
  *
  * @author @EduhFarias
  */
-import java.util.*;
 
 public class Admin extends Profile{
     private boolean verified;
@@ -43,12 +43,14 @@ public class Admin extends Profile{
         data.setData(data);
     }
     
-    public void RemoveProduct(ArrayList<Product> products,String title){
-        for(int i = 0; i < products.size(); i++){
-            if(products.get(i).getName().equals(title)){
-                products.remove(i);
+    public void RemoveProduct(String title){
+        Data data = new Data();
+        data = data.getData();
+        for(int i = 0; i < data.getProducts().size(); i++){
+            if(data.getProducts().get(i).getName().equals(title)){
+                data.getProducts().remove(i);
             }
         }
+        data.setData(data);
     }
 }
-

@@ -1,3 +1,4 @@
+
 package src;
 
 /**
@@ -34,7 +35,7 @@ public class Data {
         this.products = contents;
     }
     
-    public static void setData(Data data){ //dps tirar o static
+    public void setData(Data data){
         XStream xstream = new XStream(new DomDriver());
         String xml = xstream.toXML(data); 
         try{

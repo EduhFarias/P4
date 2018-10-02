@@ -9,7 +9,7 @@ import src.User;
 
 /**
  *
- * @author PC
+ * @author @EduhFarias
  */
 public class FrameStore extends javax.swing.JFrame {
 
@@ -178,8 +178,7 @@ public class FrameStore extends javax.swing.JFrame {
         // TODO add your handling code here:
         Data data = new Data();
         data = data.getData();
-        User user = new User();
-        user = (User) data.getProfiles().get(0);
+        User user = (User) data.getProfiles().get(0);
         for(int i = 0; i < jTable.getRowCount(); i++){
             boolean choice = (boolean) jTable.getValueAt(i, 4);
             if(choice){
